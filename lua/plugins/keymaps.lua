@@ -10,3 +10,10 @@ vim.keymap.set('n', '<leader>fp', builtin.git_files, { desc = 'Telescope git fil
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 vim.keymap.set('n', '<leader>e', ':NvimTreeFindFileToggle<cr>')
+
+-- lazy
+vim.keymap.set('n', '<leader>l', ':Lazy<CR>')
+
+-- lsp
+vim.keymap.set('n', '<leader>h', vim.lsp.buf.hover, {desc = 'Call hover function from lsp'})
+vim.keymap.set('n', '<leader>d', vim.lsp.buf.definition, {})

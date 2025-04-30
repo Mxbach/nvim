@@ -44,7 +44,33 @@ require("lazy").setup({
         -- this is equivalent to setup({}) function
     },
     {
-        "williamboman/mason.nvim"
+        "williamboman/mason.nvim",
+	config = function()
+	    require("mason").setup() -- mason package manager
+	end
+    },
+    {
+        "williamboman/mason-lspconfig.nvim",
+	config = function()
+   	    require("mason-lspconfig").setup({
+   	    	ensure_installed = { "lua_ls", "pyright" },
+   	    })
+	end
+    },
+    {
+        "neovim/nvim-lspconfig",
+	config = function()
+	    local lspconfig = require("lspconfig")
+	    lspconfig.lua_ls.setup({})
+	    lspconfig.pyright.setup({})
+	end
+    },
+    {
+	"nvim-treesitter/nvim-treesitter", build = ":TSUpdate"
+    },
+    {
+	'nvim-lualine/lualine.nvim',
+    	dependencies = { 'nvim-tree/nvim-web-devicons' }
     },
   },
   -- Configure any other settings here. See the documentation for more details.
