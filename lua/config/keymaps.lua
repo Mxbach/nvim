@@ -9,9 +9,15 @@ vim.keymap.set('n', '<leader>fzf', builtin.current_buffer_fuzzy_find, {desc = 'L
 -- neotree
 vim.keymap.set('n', '<leader>es', ':Neotree show toggle=true position=left<CR>', {})
 vim.keymap.set('n', '<leader>ef', ':Neotree focus position=left<CR>')
+vim.keymap.set('n', '<leader>eb', ':Neotree action=focus position=left source=buffers<CR>')
 
 -- lsp
 vim.keymap.set('n', 'ged', vim.diagnostic.open_float, { desc = 'Show diagnostic' })
 
 -- lazygit
 vim.keymap.set('n', '<leader>lg', "<cmd>LazyGit<cr>", { desc = "LazyGit"})
+
+-- Lazy
+vim.keymap.set('n', '<leader>L', ":Lazy<CR>", {desc = "Open Lazy package manager"})
+-- Mason
+vim.keymap.set('n', '<leader>M', ":Mason<CR>", {desc = "Open Mason package manager"})
