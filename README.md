@@ -86,3 +86,4 @@ Each plugin has its own file in `lua/plugins/`, making customization straightfor
 - A [Nerd Font](https://www.nerdfonts.com/) for icons (recommended)
 - ripgrep (for Telescope live grep)
 - A C compiler (for Treesitter)
+- unzip for unpacking Mason packages
