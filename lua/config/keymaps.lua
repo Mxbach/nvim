@@ -9,7 +9,7 @@ vim.keymap.set('n', '<leader>fzf', builtin.current_buffer_fuzzy_find, {desc = 'L
 -- neotree
 vim.keymap.set('n', '<leader>es', ':Neotree show toggle=true position=left<CR>', {})
 vim.keymap.set('n', '<leader>ef', ':Neotree focus position=left<CR>')
-vim.keymap.set('n', '<leader>eb', ':Neotree action=focus position=left source=buffers<CR>')
+vim.keymap.set('n', '<leader>eb', ':Neotree action=focus position=left source=buffers toggle=true<CR>')
 
 -- lsp
 vim.keymap.set('n', 'ged', vim.diagnostic.open_float, { desc = 'Show diagnostic' })
