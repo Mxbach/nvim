@@ -4,3 +4,4 @@ vim.opt.expandtab = true   -- Convert tabs to spaces
 vim.opt.softtabstop = 4    -- Number of spaces for <Tab> in insert mode
 vim.opt.smartindent = true -- Auto-indent new lines
 vim.opt.number = true
+vim.opt.relativenumber = true -- relative line  numbers

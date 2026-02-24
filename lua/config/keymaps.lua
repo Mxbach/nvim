@@ -21,3 +21,7 @@ vim.keymap.set('n', '<leader>lg', "<cmd>LazyGit<cr>", { desc = "LazyGit"})
 vim.keymap.set('n', '<leader>L', ":Lazy<CR>", {desc = "Open Lazy package manager"})
 -- Mason
 vim.keymap.set('n', '<leader>M', ":Mason<CR>", {desc = "Open Mason package manager"})
+
+
+-- ESC
+vim.keymap.set('i', 'jk', "<Esc>", {noremap = false, desc = "Fast escape with jk"})
