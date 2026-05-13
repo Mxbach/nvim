@@ -1,6 +1,7 @@
 return {
     {
         "mason-org/mason-lspconfig.nvim",
+        event = "BufReadPre",
         opts = {
             ensure_installed = {
                 "lua_ls",
