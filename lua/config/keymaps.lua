@@ -8,15 +8,34 @@ vim.keymap.set('n', '<leader>fzf', function() require('telescope.builtin').curre
 -- neotree
 vim.keymap.set('n', '<leader>es', function()
   for _, win in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
-    local buf = vim.api.nvim_win_get_buf(win)
-    if vim.bo[buf].filetype == 'neo-tree' then
-      vim.cmd('Neotree close position=left')
-      return
+    if vim.api.nvim_win_is_valid(win) then
+      local buf = vim.api.nvim_win_get_buf(win)
+      if vim.bo[buf].filetype == 'neo-tree' then
+        if vim.api.nvim_win_get_config(win).relative == '' then
+          vim.cmd('Neotree close position=left')
+          return
+        end
+        vim.cmd('Neotree close position=float')
+      end
     end
   end
-  vim.cmd('Neotree show toggle=true position=left')
+  vim.cmd('Neotree show position=left')
 end, { desc = 'Toggle file explorer' })
-vim.keymap.set('n', '<leader>ef', ':Neotree focus position=left<CR>')
+vim.keymap.set('n', '<leader>ef', function()
+  for _, win in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
+    if vim.api.nvim_win_is_valid(win) then
+      local buf = vim.api.nvim_win_get_buf(win)
+      if vim.bo[buf].filetype == 'neo-tree' then
+        if vim.api.nvim_win_get_config(win).relative ~= '' then
+          vim.cmd('Neotree close position=float')
+          return
+        end
+        vim.cmd('Neotree close position=left')
+      end
+    end
+  end
+  vim.cmd('Neotree focus position=float')
+end, { desc = 'Toggle file explorer (float)' })
 vim.keymap.set('n', '<leader>eb', ':Neotree action=focus position=left source=buffers toggle=true<CR>')
 
 -- lsp
