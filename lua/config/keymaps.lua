@@ -6,7 +6,16 @@ vim.keymap.set('n', '<leader>fh', function() require('telescope.builtin').help_t
 vim.keymap.set('n', '<leader>fzf', function() require('telescope.builtin').current_buffer_fuzzy_find() end, { desc = 'Live fuzzy search inside of the currently open buffer' })
 
 -- neotree
-vim.keymap.set('n', '<leader>es', ':Neotree show toggle=true position=left<CR>', {})
+vim.keymap.set('n', '<leader>es', function()
+  for _, win in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
+    local buf = vim.api.nvim_win_get_buf(win)
+    if vim.bo[buf].filetype == 'neo-tree' then
+      vim.cmd('Neotree close position=left')
+      return
+    end
+  end
+  vim.cmd('Neotree show toggle=true position=left')
+end, { desc = 'Toggle file explorer' })
 vim.keymap.set('n', '<leader>ef', ':Neotree focus position=left<CR>')
 vim.keymap.set('n', '<leader>eb', ':Neotree action=focus position=left source=buffers toggle=true<CR>')
 
